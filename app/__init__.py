@@ -12,14 +12,14 @@ from core.managers.config_manager import ConfigManager
 from core.managers.error_handler_manager import ErrorHandlerManager
 from core.managers.logging_manager import LoggingManager
 
-# Load environment variables
+# oad environment variables
 load_dotenv()
 
 # Create the instances
 db = SQLAlchemy()
 migrate = Migrate()
 
-'''
+
 def create_app(config_name='development'):
     app = Flask(__name__)
 
@@ -65,6 +65,5 @@ def create_app(config_name='development'):
         }
 
     return app
-'''
 
 app = create_app()
