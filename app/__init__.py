@@ -28,7 +28,9 @@ def create_app(config_name='development'):
     config_manager.load_config(config_name=config_name)
 
     # Initialize SQLAlchemy and Migrate with the app
+    db.init_app(app, uri=os.getenv('DB_CONNECTION_STRING'))
     db.init_app(app, uri=os.getenv('DATABASE_URI'))
+    
     migrate.init_app(app, db)
 
     # Register modules
