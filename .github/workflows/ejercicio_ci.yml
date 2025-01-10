@@ -8,9 +8,13 @@ jobs:
   pytest:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        sql_version: ['5.7', '8']
+
     services:
       mysql:
-        image: mysql:5.7
+        image: mysql:${{ matrix.sql_version-version }} 
         env:
           MYSQL_ROOT_PASSWORD: uvlhub_root_password
           MYSQL_DATABASE: uvlhubdb_test
@@ -25,7 +29,7 @@ jobs:
 
     - uses: actions/setup-python@v5
       with:
-        python-version: '3.12'
+        python-version: '3.11'
 
     - name: Prepare environment
       run: |
